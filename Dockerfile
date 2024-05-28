@@ -40,7 +40,8 @@ COPY php-recommended.ini /etc/php82/conf.d/
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
 COPY composer.sh .
-RUN ./composer.sh \
+RUN chmod +x composer.sh \
+  && ./composer.sh \
   && mv composer.phar /usr/local/bin/composer
 
 WORKDIR /var/www/localhost/htdocs
