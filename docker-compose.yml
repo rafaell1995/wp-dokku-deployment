@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  proxy:
+    image: traefik:3.0
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - 8080:8080
+      - 80:80
+    command:
+      - --providers.docker.defaultrule=Host(`{{ normalize .Name }}.localhost`)
+  web:
+    build: .
+    volumes:
+      - .:/var/www/localhost/htdocs
+    environment:
+      - DATABASE_URL=mysql://root:123@db/wordpress
+      - WP_DEBUG=true
+      - WP_DEBUG_DISPLAY=false
+      - WP_DEBUG_LOG=/tmp/wp-errors.log
+    depends_on:
+      - db
+  db:
+    image: mariadb:10.11
+    ports:
+      - 3306
+    environment:
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_ROOT_PASSWORD=123
+volumes:
+  wordpress_data:
+  db_data:
