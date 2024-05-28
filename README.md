@@ -21,7 +21,17 @@ cd wp-dokku-deployment
 docker-compose up --build
 ```
 
-3. Acesse `http://localhost:8000` no seu navegador para configurar o WordPress.
+3. No primeiro bild precisamos instalar as dependencias do composer dentro do container web:
+```sh
+docker compose exec web composer install
+```
+
+4. Por fim caso tenha um banco de dados, pode importa-lo no container db:
+```sh
+docker exec -i $(docker compose ps -q db) mysql -p123 wordpress < dump.sql
+```
+
+5. Acesse `http://localhost:8000` no seu navegador para configurar o WordPress.
 
 ## Implantação em Dokku
 
