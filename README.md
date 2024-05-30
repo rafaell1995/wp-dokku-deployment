@@ -1,53 +1,53 @@
 # wp-dokku-deployment
 
-Este repositório contém uma instalação padrão do WordPress configurada para rodar em Docker, ideal para implantação em um ambiente Dokku. Facilita a configuração, desenvolvimento e implantação de um site WordPress com gerenciamento de dependências via Composer.
+This repository contains a standard WordPress installation configured to run on Docker, ideal for deployment in a Dokku environment. It facilitates configuration, development, and deployment of a WordPress site with dependency management via Composer.
 
-## Requisitos
+## Requirements
 
 - Docker
 - Docker Compose
-- Dokku (para implantação em produção)
+- Dokku (for production deployment)
 
-## Instalação e Execução Local
+## Installation and Local Execution
 
-1. Clone este repositório:
+1. Clone this repository:
 ```bash
 git clone https://github.com/rafaell1995/wp-dokku-deployment.git
 cd wp-dokku-deployment
 ```
 
-2. Construa e inicie os containers Docker:
+2. Build and start the Docker containers:
 ```bash
 docker-compose up --build
 ```
 
-3. No primeiro bild precisamos instalar as dependencias do composer dentro do container web:
+3. On the first build, we need to install the Composer dependencies inside the web container:
 ```sh
 docker compose exec web composer install
 ```
 
-4. Por fim caso tenha um banco de dados, pode importa-lo no container db:
+4. Finally, if you have a database, you can import it into the db container:
 ```sh
 docker exec -i $(docker compose ps -q db) mysql -p123 wordpress < dump.sql
 ```
 
-5. Acesse `http://localhost:8000` no seu navegador para configurar o WordPress.
+5. Access http://localhost:8000 in your browser to configure WordPress.
 
-## Implantação em Dokku
+## Deployment in Dokku
 
-Para fazer deploy deste projeto no Dokku, siga estas etapas:
+To deploy this project in Dokku, follow these steps:
 
-1. No servidor Dokku, crie um novo app:
+1. On the Dokku server, create a new app:
 ```bash
 dokku apps
 nome-do-app
 ```
 
-2. Faça push do código para o Dokku:
+2. Push the code to Dokku:
 ```bash
 git push dokku master
 ```
 
-3. Configure o banco de dados e outras variáveis de ambiente conforme necessário.
+3. Configure the database and other necessary environment variables.
 
-Informações completas sobre como fazer o deploy de uma aplicação com Dokku em [Dokku Application Deployment Documentation](https://dokku.com/docs/deployment/application-deployment/)
+Complete information on how to deploy an application with Dokku can be found at [Dokku Application Deployment Documentation](https://dokku.com/docs/deployment/application-deployment/)
