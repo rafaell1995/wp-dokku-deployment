@@ -45,7 +45,7 @@ nome-do-app
 
 2. Push the code to Dokku:
 ```bash
-git push dokku master
+git push dokku main
 ```
 
 3. Configure the database and other necessary environment variables.
