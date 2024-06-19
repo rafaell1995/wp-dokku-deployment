@@ -1,0 +1,27 @@
+{
+  "name": "wp-dokku-deployment",
+  "scripts": {
+    "dokku": {
+      "predeploy": "echo 'Executando tarefas antes do deploy'",
+      "postdeploy": "echo 'Executando tarefas após o deploy'"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "1X"
+    }
+  },
+  "routes": {
+    "http": [
+      {
+        "path": "/proxy/",
+        "method": "any",
+        "action": {
+          "type": "proxy",
+          "target": "https://odontounica.com.br"
+        }
+      }
+    ]
+  }
+}
