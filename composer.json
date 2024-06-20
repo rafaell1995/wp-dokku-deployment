@@ -27,7 +27,7 @@
     "ext-mbstring": "*",
     "ext-intl": "*",
     "ext-zip": "*",
-    "roots/wordpress": "^6.5",
+    "roots/wordpress": "~6.5.4",
     "koodimonni-language/pt_br": "*",
     "wpackagist-plugin/redirection": "^5.4.0",
     "wpackagist-plugin/wp-migrate-db": "^2.6.0",

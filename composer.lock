@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6ee6596d6a4605c5d70615f230b3d5c",
+    "content-hash": "b8401da5ec46ce84284defab57c6be02",
     "packages": [
         {
             "name": "composer/installers",
@@ -153,10 +153,10 @@
         },
         {
             "name": "koodimonni-language/pt_br",
-            "version": "6.5.3",
+            "version": "6.5.4",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/core/6.5.3/pt_BR.zip"
+                "url": "https://downloads.wordpress.org/translation/core/6.5.4/pt_BR.zip"
             },
             "require": {
                 "koodimonni-plugin-language/akismet-pt_br": "*",
@@ -549,10 +549,10 @@
         },
         {
             "name": "koodimonni-plugin-language/woocommerce-pt_br",
-            "version": "8.9.1",
+            "version": "9.0.0",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/plugin/woocommerce/8.9.1/pt_BR.zip"
+                "url": "https://downloads.wordpress.org/translation/plugin/woocommerce/9.0.0/pt_BR.zip"
             },
             "require": {
                 "koodimonni/composer-dropin-installer": ">=0.2.3"
@@ -933,7 +933,7 @@
         },
         {
             "name": "roots/wordpress",
-            "version": "6.5.3",
+            "version": "6.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/wordpress.git",
@@ -964,7 +964,7 @@
             ],
             "support": {
                 "issues": "https://github.com/roots/wordpress/issues",
-                "source": "https://github.com/roots/wordpress/tree/6.5.3"
+                "source": "https://github.com/roots/wordpress/tree/6.5.4"
             },
             "funding": [
                 {
@@ -1047,22 +1047,22 @@
         },
         {
             "name": "roots/wordpress-no-content",
-            "version": "6.5.3",
+            "version": "6.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress/WordPress.git",
-                "reference": "6.5.3"
+                "reference": "6.5.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/release/wordpress-6.5.3-no-content.zip",
-                "shasum": "adeffdc339d34eab4209e88b17966d8917e36e91"
+                "url": "https://downloads.wordpress.org/release/wordpress-6.5.4-no-content.zip",
+                "shasum": "bb4d48b2f6f47f4c06061460c83f8453e9809af5"
             },
             "require": {
                 "php": ">= 7.0.0"
             },
             "provide": {
-                "wordpress/core-implementation": "6.5.3"
+                "wordpress/core-implementation": "6.5.4"
             },
             "suggest": {
                 "ext-curl": "Performs remote request operations.",
@@ -1113,7 +1113,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2024-05-07T16:02:20+00:00"
+            "time": "2024-06-06T12:30:39+00:00"
         },
         {
             "name": "wpackagist-plugin/redirection",
@@ -1135,15 +1135,15 @@
         },
         {
             "name": "wpackagist-plugin/wp-migrate-db",
-            "version": "2.6.10",
+            "version": "2.6.11",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wp-migrate-db/",
-                "reference": "tags/2.6.10"
+                "reference": "tags/2.6.11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-migrate-db.2.6.10.zip"
+                "url": "https://downloads.wordpress.org/plugin/wp-migrate-db.2.6.11.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
