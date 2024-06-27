@@ -19,6 +19,39 @@
  * @package WordPress
  */
 
+// Verifica se WP_CLI está definido e ajusta o caminho do autoloader conforme necessário
+if (defined('WP_CLI')) {
+    // Configurações específicas para WP-CLI
+    // Define HTTP_HOST para evitar erros quando acessado via WP-CLI
+    $_SERVER['HTTP_HOST'] = 'default.local';
+}
+
+require_once (__DIR__ . '/../vendor/autoload.php');
+
+// Environments to R2
+define("S3_UPLOADS_ENDPOINT", getenv("S3_UPLOADS_ENDPOINT"));
+define("S3_UPLOADS_BUCKET", getenv("S3_UPLOADS_BUCKET"));
+define("S3_UPLOADS_BUCKET_URL", getenv("S3_UPLOADS_BUCKET_URL"));
+define("S3_UPLOADS_REGION", getenv("S3_UPLOADS_REGION"));
+define("S3_UPLOADS_KEY", getenv("S3_UPLOADS_KEY"));
+define("S3_UPLOADS_SECRET", getenv("S3_UPLOADS_SECRET"));
+
+$s3UploadsDisableReplaceUploadUrl = getenv("S3_UPLOADS_DISABLE_REPLACE_UPLOAD_URL");
+
+if ($s3UploadsDisableReplaceUploadUrl !== false) {
+    define("S3_UPLOADS_DISABLE_REPLACE_UPLOAD_URL", $s3UploadsDisableReplaceUploadUrl);
+}
+
+define("S3_UPLOADS_OBJECT_ACL", getenv("S3_UPLOADS_OBJECT_ACL"));
+define("S3_UPLOADS_HTTP_CACHE_CONTROL", getenv("S3_UPLOADS_HTTP_CACHE_CONTROL"));
+define("S3_UPLOADS_AUTOENABLE", getenv("S3_UPLOADS_AUTOENABLE"));
+
+$s3UploadsUseLocal = getenv("S3_UPLOADS_USE_LOCAL");
+
+if ($s3UploadsUseLocal !== false) {
+    define("S3_UPLOADS_USE_LOCAL", $s3UploadsUseLocal);
+}
+
 // You'll need a DATABASE_URL env variable set.
 $database = parse_url(getenv('DATABASE_URL'));
 

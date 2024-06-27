@@ -8,7 +8,15 @@ services:
       - 8080:8080
       - 80:80
     command:
+      - --providers.docker=true
       - --providers.docker.defaultrule=Host(`{{ normalize .Name }}.localhost`)
+      - --entrypoints.web.address=:80
+    labels:
+      - "traefik.http.routers.redirect-to-r2.rule=HostRegexp(`{host:.+}`) && PathPrefix(`/wp-content/uploads`)"
+      - "traefik.http.routers.redirect-to-r2.entrypoints=web"
+      - "traefik.http.middlewares.redirect-to-r2.redirectregex.regex=^http://.+?/wp-content/uploads/(.*)"
+      - "traefik.http.middlewares.redirect-to-r2.redirectregex.replacement=https://storage.wp-dokku-deployment.dokku.codenz.com.br/uploads/$1"
+      - "traefik.http.routers.redirect-to-r2.middlewares=redirect-to-r2"
   web:
     build: .
     volumes:
@@ -18,6 +26,8 @@ services:
       - WP_DEBUG=true
       - WP_DEBUG_DISPLAY=false
       - WP_DEBUG_LOG=/tmp/wp-errors.log
+      - REMOTE_URL=https://wp-dokku-deployment.dokku.codenz.com.br
+      - S3_UPLOADS_USE_LOCAL=true
     depends_on:
       - db
   db:
@@ -27,6 +37,18 @@ services:
     environment:
       - MYSQL_DATABASE=wordpress
       - MYSQL_ROOT_PASSWORD=123
+  cli:
+    image: jogajunto/wordpress-cli:latest
+    depends_on:
+      - db
+      - web
+    volumes:
+      - .:/var/www/localhost/htdocs
+    environment:
+      - DATABASE_URL=mysql://root:123@db/wordpress
+      - WP_DEBUG=true
+      - REMOTE_URL=https://wp-dokku-deployment.dokku.codenz.com.br
+    working_dir: /var/www/localhost/htdocs
 volumes:
   wordpress_data:
   db_data:

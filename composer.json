@@ -15,6 +15,10 @@
     {
       "type": "path",
       "url": "packages/themes/*"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/humanmade/S3-Uploads"
     }
   ],
   "require": {
@@ -31,7 +35,8 @@
     "koodimonni-language/pt_br": "*",
     "wpackagist-plugin/redirection": "^5.4.0",
     "wpackagist-plugin/wp-migrate-db": "^2.6.0",
-    "local/twentytwentyfour": "1.1"
+    "local/twentytwentyfour": "1.1",
+    "humanmade/s3-uploads": "3.0.7"
   },
   "extra": {
     "wordpress-install-dir": "public/wp-core",
@@ -54,6 +59,14 @@
         "vendor:koodimonni-theme-language"
       ]
     }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "sh copy-muplugins.sh"
+    ],
+    "post-update-cmd": [
+      "sh copy-muplugins.sh"
+    ]
   },
   "config": {
     "allow-plugins": {
